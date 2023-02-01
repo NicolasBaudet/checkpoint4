@@ -1,0 +1,23 @@
+.homePage {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr 9fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.navBar {
+  grid-area: 1 / 1 / 2 / 3;
+  height: 10vh;
+}
+
+.homeBody {
+  grid-area: 2 / 2 / 3 / 3;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.sideBar {
+  grid-area: 2 / 1 / 3 / 2;
+  background-image: url("../assets/cocotier.jpg");
+}
