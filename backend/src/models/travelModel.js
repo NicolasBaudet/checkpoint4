@@ -15,4 +15,11 @@ const deleteOneTravel = (id) => {
     .then(([res]) => res);
 };
 
-module.exports = { findAllTravels, deleteOneTravel };
+const createOneTravel = (payload) => {
+  return database
+    .promise()
+    .query("INSERT INTO travel SET ?", [payload])
+    .then(([res]) => res);
+};
+
+module.exports = { findAllTravels, deleteOneTravel, createOneTravel };

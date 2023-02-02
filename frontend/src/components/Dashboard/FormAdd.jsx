@@ -1,12 +1,11 @@
 /* eslint-disable camelcase */
-import { useState } from "react";
+import PropTypes from "prop-types";
 import "./FormAdd.css";
 
-function FormAdd() {
-  const [newTravel, setNewTravel] = useState({});
-
+function FormAdd({ newTravel, setNewTravel, onclick, status }) {
   const handleSubmit = (event) => {
     event.preventDefault();
+    onclick();
   };
 
   const handleChange = (e) => {
@@ -28,7 +27,9 @@ function FormAdd() {
               type="text"
               className="imputProfil"
               name="country"
-              placeholder="Pays à visiter..."
+              placeholder={
+                status === 4 ? newTravel.country : "Pays à visiter..."
+              }
               onChange={handleChange}
             />
           </div>
@@ -37,7 +38,7 @@ function FormAdd() {
               type="text"
               className="imputProfil"
               name="city"
-              placeholder="Ville..."
+              placeholder={status === 4 ? newTravel.city : "Ville..."}
               onChange={handleChange}
             />
           </div>
@@ -48,7 +49,7 @@ function FormAdd() {
               type="text"
               className="imputProfil"
               name="price"
-              placeholder="Prix du voyage..."
+              placeholder={status === 4 ? newTravel.price : "Prix du voyage..."}
               onChange={handleChange}
             />
           </div>
@@ -57,7 +58,7 @@ function FormAdd() {
               type="text"
               className="resume"
               name="resume"
-              placeholder="Résumé..."
+              placeholder={status === 4 ? newTravel.resume : "Résumé..."}
               onChange={handleChange}
             />
           </div>
@@ -66,7 +67,9 @@ function FormAdd() {
               type="text"
               className="description"
               name="description"
-              placeholder="Description complète..."
+              placeholder={
+                status === 4 ? newTravel.description : "Description complète..."
+              }
               onChange={handleChange}
             />
           </div>
@@ -79,6 +82,11 @@ function FormAdd() {
   );
 }
 
-FormAdd.propTypes = {};
+FormAdd.propTypes = {
+  newTravel: PropTypes.string.isRequired,
+  setNewTravel: PropTypes.string.isRequired,
+  onclick: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+};
 
 export default FormAdd;

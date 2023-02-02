@@ -5,6 +5,7 @@ import SideBar from "../components/Home/SideBar";
 import NavBarDashboard from "../components/Dashboard/NavBarDashboard";
 import dataDecisionType from "../Tools/dataDecisionType";
 import TravelItem from "../components/Travel/TravelItem";
+import TravelItem2 from "../components/Travel/TravelItem2";
 import FormAdd from "../components/Dashboard/FormAdd";
 
 export default function Dashboard() {
@@ -12,6 +13,8 @@ export default function Dashboard() {
   const [allTravels, setAllTravels] = useState();
   const [deleted, setDeleted] = useState();
   const [sure, setSure] = useState(false);
+  const [sure2, setSure2] = useState(false);
+  const [newTravel, setNewTravel] = useState({});
   let allTravelsMap = 0;
 
   const handleClick = (e) => {
@@ -32,6 +35,20 @@ export default function Dashboard() {
         setStatus(0);
         break;
     }
+  };
+
+  const modifyOneTravel = () => {
+    // allTravelsMap = (
+    //   <FormAdd
+    //     newTravel={newTravel}
+    //     setNewTravel={setNewTravel}
+    //     onclick={() => modifyOneTravel(newTravel)}
+    //     status={status}
+    //   />
+    // );
+    // setNewTravel(e);
+    setStatus(4);
+    // console.log("nonnnnnnn");
   };
 
   const getAllbuttons = () => {
@@ -62,18 +79,35 @@ export default function Dashboard() {
     setSure(true);
   };
 
-  const handleDelete = (id) => {
-    api.delete(`travel/${id}`).then((response) => setDeleted(response));
+  const handleSure2 = () => {
+    setSure2(true);
+  };
+
+  const handleDelete = () => {
+    // console.log(id, "id");
+    // api.delete(`travel/${id}`).then((response) => setDeleted(response));
   };
 
   const functionNo = () => {
     setDeleted("response");
   };
 
+  const functionNo2 = () => {
+    setDeleted("response");
+  };
+
+  // const functionYes2 = (id) => {
+  //   console.log(id, "e");
+  // };
+
+  const createOneTravel = (e) => {
+    api.post("/travel", e);
+    setStatus(0);
+  };
   useEffect(() => {
     setSure(false);
     getAllTravels();
-  }, [deleted]);
+  }, [deleted, status]);
 
   if (allTravels) {
     switch (status) {
@@ -88,16 +122,21 @@ export default function Dashboard() {
             city={travelItem.city}
             picture={travelItem.picture}
             resume={travelItem.resume}
-            toto={0}
           />
         ));
         break;
       case 1:
-        allTravelsMap = <FormAdd />;
+        allTravelsMap = (
+          <FormAdd
+            newTravel={newTravel}
+            setNewTravel={setNewTravel}
+            onclick={() => createOneTravel(newTravel)}
+          />
+        );
         break;
       case 2:
         allTravelsMap = allTravels.map((travelItem) => (
-          <TravelItem
+          <TravelItem2
             key={travelItem.id}
             id={travelItem.id}
             country={travelItem.country}
@@ -106,7 +145,12 @@ export default function Dashboard() {
             city={travelItem.city}
             picture={travelItem.picture}
             resume={travelItem.resume}
-            toto={2}
+            onsure2={() => handleSure2()}
+            functionModify={(e) => modifyOneTravel(e)}
+            functionNo2={() => functionNo2()}
+            functionYes2={() => handleDelete(travelItem.id)}
+            sure2={sure2}
+            status={status}
           />
         ));
         break;
@@ -125,8 +169,20 @@ export default function Dashboard() {
             functionNo={() => functionNo()}
             functionYes={() => handleDelete(travelItem.id)}
             sure={sure}
+            status={status}
           />
         ));
+        break;
+      case 4:
+        allTravelsMap = (
+          <FormAdd
+            newTravel={newTravel}
+            setNewTravel={setNewTravel}
+            onclick={() => modifyOneTravel(newTravel.price)}
+            status={status}
+          />
+        );
+        // console.log(newTravel, "ici");
         break;
       default:
         allTravelsMap = allTravels.map((travelItem) => (
@@ -144,6 +200,7 @@ export default function Dashboard() {
     }
   }
 
+  // console.log(status, "status");
   return (
     <div className="dashboardContainer">
       <div className="navBarDashboard">

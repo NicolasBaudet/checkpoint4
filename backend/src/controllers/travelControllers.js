@@ -26,6 +26,31 @@ const travelController = {
       })
       .catch((err) => next(err));
   },
+
+  postOneTravel: (req, res) => {
+    const { country, price, description, city, resume } = req.body;
+    travelModel
+      .createOneTravel({
+        country,
+        price,
+        description,
+        city,
+        resume,
+      })
+      .then(() =>
+        res.status(201).send({
+          country,
+          price,
+          description,
+          city,
+          resume,
+        })
+      )
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  },
 };
 
 module.exports = travelController;
