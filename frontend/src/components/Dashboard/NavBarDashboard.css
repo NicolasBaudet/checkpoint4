@@ -1,0 +1,41 @@
+.navBarDashboardContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  background-image: url("../../assets/beachandshells.jpg");
+  gap: 1vw;
+}
+
+.navBarDashAll {
+  width: auto;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.navBarDashAdd {
+  width: auto;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.navBarDashModif {
+  width: auto;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.lognavBarDashDelin {
+  width: auto;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.decisionBtn {
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 67px;
+  width: auto;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+}

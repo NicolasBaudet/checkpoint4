@@ -1,0 +1,37 @@
+.navBar {
+  display: flex;
+  align-items: center;
+  background-image: url("../../assets/beachandshells.jpg");
+}
+
+.navBarTitle {
+  width: 65vw;
+  margin-left: 3vw;
+  font-size: 3rem;
+}
+
+.navBarIcons {
+  display: flex;
+}
+
+.dashboard {
+  width: auto;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.favorite {
+  width: auto;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+.basket {
+  width: auto;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+.login {
+  width: auto;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}

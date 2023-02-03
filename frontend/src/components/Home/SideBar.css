@@ -1,0 +1,24 @@
+.sideBarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.country {
+  background-color: aliceblue;
+  margin-top: 20vh;
+  width: auto;
+}
+
+.price {
+  background-color: aliceblue;
+  margin-top: 5vh;
+  width: auto;
+}
+
+.activity {
+  background-color: aliceblue;
+  margin-top: 5vh;
+  width: auto;
+}
